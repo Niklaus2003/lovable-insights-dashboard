@@ -83,7 +83,7 @@ export function SessionHistory({ sessions }: SessionHistoryProps) {
       </Card>
 
       <Dialog open={!!selectedSession} onOpenChange={() => setSelectedSession(null)}>
-        <DialogContent className="max-w-2xl max-h-[85vh] overflow-hidden">
+        <DialogContent className="max-w-2xl max-h-[85vh] flex flex-col overflow-hidden">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
               <span>Session Details</span>
@@ -91,9 +91,9 @@ export function SessionHistory({ sessions }: SessionHistoryProps) {
             </DialogTitle>
           </DialogHeader>
           {selectedSession && (
-            <div className="space-y-4 overflow-auto">
+            <div className="flex flex-col gap-4 min-h-0 flex-1">
               {selectedSession.summary && (
-                <div className="space-y-2 rounded-lg bg-secondary/50 p-4">
+                <div className="space-y-2 rounded-lg bg-secondary/50 p-4 shrink-0">
                   <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Summary</p>
                   <p className="text-sm text-foreground">{selectedSession.summary.issue}</p>
                   <div className="flex flex-wrap gap-2 pt-2">
@@ -104,9 +104,11 @@ export function SessionHistory({ sessions }: SessionHistoryProps) {
                   </div>
                 </div>
               )}
-              <div>
-                <p className="mb-2 text-xs font-medium text-muted-foreground uppercase tracking-wide">Transcript</p>
-                <TranscriptViewer transcripts={selectedSession.transcripts} maxHeight="350px" />
+              <div className="flex flex-col min-h-0 flex-1">
+                <p className="mb-2 text-xs font-medium text-muted-foreground uppercase tracking-wide shrink-0">Transcript</p>
+                <ScrollArea className="flex-1 max-h-[400px]">
+                  <TranscriptViewer transcripts={selectedSession.transcripts} maxHeight="none" />
+                </ScrollArea>
               </div>
             </div>
           )}
