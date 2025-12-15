@@ -1,7 +1,6 @@
 import { DashboardHeader } from "@/components/dashboard/DashboardHeader";
 import { StatsCards } from "@/components/dashboard/StatsCards";
 import { ActiveSessionPanel } from "@/components/dashboard/ActiveSessionPanel";
-import { AISummary } from "@/components/dashboard/AISummary";
 import { SessionHistory } from "@/components/dashboard/SessionHistory";
 import { DashboardCharts } from "@/components/dashboard/DashboardCharts";
 import { mockData } from "@/lib/mockData";
@@ -25,14 +24,9 @@ export default function Dashboard() {
               <StatsCards data={mockData} />
             </section>
 
-            {/* Active Session & AI Summary */}
-            <section className="grid gap-4 lg:grid-cols-3">
-              <div className="lg:col-span-2">
-                <ActiveSessionPanel session={mockData.activeSession} />
-              </div>
-              <div>
-                <AISummary session={mockData.activeSession} />
-              </div>
+            {/* Active Session */}
+            <section>
+              <ActiveSessionPanel session={mockData.activeSession} />
             </section>
 
             {/* Charts */}
@@ -40,7 +34,7 @@ export default function Dashboard() {
               <DashboardCharts />
             </section>
 
-            {/* Session History */}
+            {/* Session History with integrated search and summary */}
             <section>
               <SessionHistory sessions={mockData.history} />
             </section>

@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { Radio, Clock, Ticket } from "lucide-react";
 import type { Session } from "@/lib/mockData";
 import { TranscriptViewer } from "./TranscriptViewer";
@@ -58,7 +59,9 @@ export function ActiveSessionPanel({ session }: ActiveSessionPanelProps) {
         </div>
       </CardHeader>
       <CardContent className="pt-0">
-        <TranscriptViewer transcripts={session.transcripts} maxHeight="300px" />
+        <ScrollArea className="max-h-[300px]">
+          <TranscriptViewer transcripts={session.transcripts} maxHeight="none" />
+        </ScrollArea>
       </CardContent>
     </Card>
   );
