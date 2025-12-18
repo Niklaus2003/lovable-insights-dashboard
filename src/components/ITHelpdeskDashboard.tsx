@@ -1,3 +1,41 @@
+/**
+ * IT Helpdesk Dashboard Component
+ * A self-contained, reusable dashboard for IT helpdesk analytics
+ * 
+ * ===== NEXT.JS INTEGRATION GUIDE =====
+ * 
+ * 1. Install dependencies:
+ *    npm install recharts lucide-react
+ * 
+ * 2. Install shadcn/ui components:
+ *    npx shadcn@latest add card badge button dialog scroll-area input tabs
+ * 
+ * 3. Copy this file to: components/ITHelpdeskDashboard.tsx
+ * 
+ * 4. Add these CSS variables to your globals.css (if not already present):
+ *    --chart-1, --chart-2, --chart-3, --chart-4, --chart-5 (HSL colors)
+ *    --success (HSL color for success states)
+ * 
+ * 5. Add these CSS classes to globals.css:
+ *    .glass-card { @apply bg-card/50 backdrop-blur-sm border-border/50; }
+ *    .status-badge { @apply text-xs font-medium px-2 py-0.5 rounded-full; }
+ *    .status-success { @apply bg-success/15 text-success border-success/30; }
+ *    .status-warning { @apply bg-warning/15 text-warning border-warning/30; }
+ *    .animate-fade-in { animation: fadeIn 0.3s ease-out forwards; }
+ * 
+ * 6. Usage:
+ *    import { ITHelpdeskDashboard } from '@/components/ITHelpdeskDashboard';
+ *    import type { Session, DashboardStats, ChartData } from '@/components/ITHelpdeskDashboard';
+ * 
+ *    <ITHelpdeskDashboard
+ *      sessions={sessions}
+ *      stats={stats}
+ *      chartData={chartData}
+ *    />
+ */
+
+"use client"; // Required for Next.js App Router
+
 import { useState, useMemo } from "react";
 import { 
   MessageSquare, Ticket, Clock, CheckCircle, History, ChevronRight, 
